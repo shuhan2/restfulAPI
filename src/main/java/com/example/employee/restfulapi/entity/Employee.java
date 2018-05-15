@@ -14,7 +14,17 @@ public class Employee {
     private String gender;
     private Integer salary;
     private Long companyId;
+    public Company getCompany() {
+        return company;
+    }
 
+    public void setCompany(Company company) {
+        this.company = company;
+    }
+
+    @OneToOne
+    @JoinColumn(name = "id")
+    private Company company;
     public Employee() {
     }
 
