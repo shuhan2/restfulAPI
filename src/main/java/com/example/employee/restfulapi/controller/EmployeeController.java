@@ -24,9 +24,7 @@ public class EmployeeController {
 //    DELETE    /employees/1  #删除某个employee
     @Autowired
     EmployeeRepository employeeRepository;
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    Employee saveEmployee(@RequestBody Employee employee){return employeeRepository.save(employee);}
+
 
     //    GET       /employees    #获取employee列表
     @GetMapping
@@ -52,7 +50,9 @@ public class EmployeeController {
     List<Employee> findAllMaleEmployees(){
         return employeeRepository.findByGenderIsIn("male");
     }
-
-
+//    POST      /employees    #增加一个employee
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    Employee saveEmployee(@RequestBody Employee employee){return employeeRepository.save(employee);}
 
 }
