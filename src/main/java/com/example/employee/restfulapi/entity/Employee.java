@@ -6,6 +6,8 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 public class Employee {
+
+
     @Id
     @GeneratedValue
     private Long id;
@@ -35,7 +37,9 @@ public class Employee {
         this.salary = salary;
         this.companyId = companyId;
     }
-
+    public void setId(Long id) {
+        this.id = id;
+    }
     public Long getCompanyId() {
         return companyId;
     }

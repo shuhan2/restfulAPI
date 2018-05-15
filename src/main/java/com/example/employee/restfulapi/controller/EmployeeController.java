@@ -19,7 +19,7 @@ public class EmployeeController {
     //在此处完成Employee API
 
 
-//    POST      /employees    #增加一个employee
+
 //    PUT       /employees/1  #更新某个employeegit
 //    DELETE    /employees/1  #删除某个employee
     @Autowired
@@ -54,5 +54,16 @@ public class EmployeeController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     Employee saveEmployee(@RequestBody Employee employee){return employeeRepository.save(employee);}
+
+    //    PUT       /employees/1  #更新某个employeegit
+    @PutMapping("{id}")
+    Employee putEmployee(@PathVariable long id, @RequestBody Employee employee)  throws NotFoundException{
+        Employee employee2 =employeeRepository.findById(id);
+        if(employee2==null){
+            throw   new NotFoundEx(id,"employee");
+        }
+        employee.setId(id);
+        return employeeRepository.save(employee);
+    }
 
 }
