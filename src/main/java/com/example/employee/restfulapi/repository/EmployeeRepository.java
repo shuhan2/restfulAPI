@@ -26,6 +26,7 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long>,CrudRe
   Employee findTop1BySalaryAndCompanyId(int salary,long companyId);
   //4.实现对Employee的分页查询，每页两个数据,每页两条数据，一共三页数。
   //注意：PageRequest的构造方法已经弃用了代替的是PageRequest.of,并且最后一个参数代表按照table中的哪一个字段排序
+  @Override
   Page<Employee> findAll(Pageable pageable);
   //5.查找**的所在的公司的公司名称
   Employee findByName(String name);
@@ -38,8 +39,9 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long>,CrudRe
   @Query("delete from Employee employee   where employee.name =?1")
   void deleteByName(String name);
   List<Employee> findByGenderIsIn(String gender);
-
-
+  Employee findById(long id);
+  List<Employee> findAll();
+  List<Employee> findByCompanyId(Long companyId);
 
 
 }
